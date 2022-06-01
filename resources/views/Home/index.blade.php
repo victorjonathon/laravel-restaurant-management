@@ -11,13 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <title>Klassy Cafe - Restaurant HTML Template</title>
-<!--
-    
-TemplateMo 558 Klassy Cafe
 
-https://templatemo.com/tm-558-klassy-cafe
-
--->
     <!-- Additional CSS Files -->
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
 
@@ -81,7 +75,7 @@ https://templatemo.com/tm-558-klassy-cafe
                                     <li><a href="#">Features Page 4</a></li>
                                 </ul>
                             </li>
-                            <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
+                         
                             <li class="scroll-to-section"><a href="#reservation">Contact Us</a></li> 
                         </ul>        
                         <a class='menu-trigger'>
