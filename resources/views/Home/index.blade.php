@@ -11,13 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <title>Klassy Cafe - Restaurant HTML Template</title>
-<!--
-    
-TemplateMo 558 Klassy Cafe
 
-https://templatemo.com/tm-558-klassy-cafe
-
--->
     <!-- Additional CSS Files -->
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
 
@@ -60,16 +54,6 @@ https://templatemo.com/tm-558-klassy-cafe
                             <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
                             <li class="scroll-to-section"><a href="#about">About</a></li>
                            	
-                        <!-- 
-                            <li class="submenu">
-                                <a href="javascript:;">Drop Down</a>
-                                <ul>
-                                    <li><a href="#">Drop Down Page 1</a></li>
-                                    <li><a href="#">Drop Down Page 2</a></li>
-                                    <li><a href="#">Drop Down Page 3</a></li>
-                                </ul>
-                            </li>
-                        -->
                             <li class="scroll-to-section"><a href="#menu">Menu</a></li>
                             <li class="scroll-to-section"><a href="#chefs">Chefs</a></li> 
                             <li class="submenu">
@@ -81,8 +65,22 @@ https://templatemo.com/tm-558-klassy-cafe
                                     <li><a href="#">Features Page 4</a></li>
                                 </ul>
                             </li>
-                            <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
+                         
                             <li class="scroll-to-section"><a href="#reservation">Contact Us</a></li> 
+
+                            @if (Route::has('login'))
+                                @auth
+                                    <li class="scroll-to-section">
+                                        <x-app-layout></x-app-layout>
+                                    </li> 
+                                @else 
+                                    <li class="scroll-to-section"><a href="{{ url('/login') }}">Login</a></li>
+                                    @if (Route::has('register'))
+                                        <li class="scroll-to-section"><a href="{{ url('/register') }}">Register</a></li>
+                                    @endif
+                                @endauth
+                            @endif
+
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -738,7 +736,7 @@ https://templatemo.com/tm-558-klassy-cafe
                     <div class="left-text-content">
                         <p>© Copyright Klassy Cafe Co.
                         
-                        <br>Design: TemplateMo</p>
+                        <br>Developed By: Vikas Uniyal</p>
                     </div>
                 </div>
             </div>
