@@ -21,6 +21,10 @@ use App\Http\Controllers\AdminController;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/users', [AdminController::class, 'user']);
 Route::get('/deleteuser/{id}', [AdminController::class, 'deleteuser']);
+Route::get('/foodmenu', [AdminController::class, 'foodmenu']);
+Route::get('/addfood', [AdminController::class, 'addfoodform']);
+Route::post('/addfood', [AdminController::class, 'addfooditem']);
+Route::get('/deletefood/{id}', [AdminController::class, 'deletefood']);
 
 Route::get('/redirects', [HomeController::class, 'redirects']);
 

@@ -65,7 +65,11 @@
                 <div class="col-12 grid-margin">
                   <div class="card">
                     <div class="card-body">
-                      <h4 class="card-title">Users</h4>
+                      <h4 class="card-title d-flex justify-content-between">
+                        <span>Food Menu</span>
+                        <a class="btn btn-success" href="{{ url('/addfood') }}">Add New Item</a>
+                      </h4>
+                      
                       <div class="table-responsive">
                         <table class="table">
                           <thead>
@@ -77,15 +81,15 @@
                                   </label>
                                 </div>
                               </th>
-                              <th> User Name </th>
-                              <th> Email </th>
-                              <th> Member Since </th>
+                              <th> Title </th>
+                              <th> price </th>
+                              <th> image </th>
                               <th> Action </th>
                             </tr>
                           </thead>
                           <tbody>
 
-                              @foreach($users as $user)
+                              @foreach($fooditems as $item)
                                 <tr>
                                 <td>
                                     <div class="form-check form-check-muted m-0">
@@ -94,17 +98,15 @@
                                     </label>
                                     </div>
                                 </td>
-                                <td> {{ $user->name }} </td>
-                                <td> {{ $user->email }} </td>
-                                <td> {{ $user->created_at->format('d/m/Y') }} </td>
+                                <td> {{ $item->title }} </td>
+                                <td> {{ $item->price }} </td>
+                                <td> <img src="foodimages/{{ $item->image }}" alt=""> </td>
                                 <td>
-                                    @if($user->usertype == '0')
-                                        <a class="btn btn-outline-danger" href="{{ url('/deleteuser', $user->id) }}" onclick="return confirm('Are you sure, you want to delete it?')">Delete</a>
-                                    @endif
+                                    <a class="btn btn-outline-danger" href="{{ url('/deletefood', $item->id) }}" onclick="return confirm('Are you sure, you want to delete it?')">Delete</a>
                                 </td>
                                 </tr>
                             @endforeach
-
+                            
                           </tbody>
                         </table>
                       </div>
