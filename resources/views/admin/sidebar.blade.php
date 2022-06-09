@@ -17,11 +17,11 @@
         </a>
       </li>
       <li class="nav-item menu-items">
-        <a class="nav-link" href="pages/forms/basic_elements.html">
+        <a class="nav-link" href="{{ url('/foodmenu') }}">
           <span class="menu-icon">
             <i class="mdi mdi-food"></i>
           </span>
-          <span class="menu-title">Food Items</span>
+          <span class="menu-title">Food Menu</span>
         </a>
       </li>
       <li class="nav-item menu-items">

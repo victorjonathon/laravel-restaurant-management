@@ -62,52 +62,34 @@
             @endif
             
             <div class="row ">
-                <div class="col-12 grid-margin">
+                <div class="col-12 grid-margin stretch-card">
                   <div class="card">
                     <div class="card-body">
-                      <h4 class="card-title">Users</h4>
-                      <div class="table-responsive">
-                        <table class="table">
-                          <thead>
-                            <tr>
-                              <th>
-                                <div class="form-check form-check-muted m-0">
-                                  <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input">
-                                  </label>
-                                </div>
-                              </th>
-                              <th> User Name </th>
-                              <th> Email </th>
-                              <th> Member Since </th>
-                              <th> Action </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-
-                              @foreach($users as $user)
-                                <tr>
-                                <td>
-                                    <div class="form-check form-check-muted m-0">
-                                    <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input">
-                                    </label>
-                                    </div>
-                                </td>
-                                <td> {{ $user->name }} </td>
-                                <td> {{ $user->email }} </td>
-                                <td> {{ $user->created_at->format('d/m/Y') }} </td>
-                                <td>
-                                    @if($user->usertype == '0')
-                                        <a class="btn btn-outline-danger" href="{{ url('/deleteuser', $user->id) }}" onclick="return confirm('Are you sure, you want to delete it?')">Delete</a>
-                                    @endif
-                                </td>
-                                </tr>
-                            @endforeach
-
-                          </tbody>
-                        </table>
-                      </div>
+                      <h4 class="card-title d-flex justify-content-between">
+                        <span>Add New Food Item</span>
+                        <a class="btn btn-success" href="{{ url('/foodmenu') }}">Back To Listing</a>
+                      </h4>
+                      <form class="forms-sample" action="{{ url('/addfood')}}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="form-group">
+                          <label for="exampleInputName1">Title</label>
+                          <input type="text" class="form-control" id="exampleInputName1" placeholder="Name" name="title">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputEmail3">Price</label>
+                          <input type="number" step="any" class="form-control" id="exampleInputEmail3" placeholder="Price" name="price">
+                        </div>
+                        <div class="form-group">
+                          <label>Image</label>
+                          <input type="file" name="image" class="">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleTextarea1">Description</label>
+                          <textarea class="form-control" id="exampleTextarea1" rows="5" name="description"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary me-2">Submit</button>
+                        <button class="btn btn-dark">Cancel</button>
+                      </form>
                     </div>
                   </div>
                 </div>
