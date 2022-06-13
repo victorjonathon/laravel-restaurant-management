@@ -99,7 +99,7 @@
                                     </div>
                                 </td>
                                 <td> {{ $item->title }} </td>
-                                <td> {{ $item->price }} </td>
+                                <td> ${{ $item->price }} </td>
                                 <td> <img src="foodimages/{{ $item->image }}" alt=""> </td>
                                 <td>
                                     <a class="btn btn-outline-danger" href="{{ url('/deletefood', $item->id) }}" onclick="return confirm('Are you sure, you want to delete it?')">Delete</a>
