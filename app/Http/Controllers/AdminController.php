@@ -59,4 +59,34 @@ class AdminController extends Controller
         $fooditem->delete();
         return redirect()->back()->with('success', 'Record deleted successfully');   
     }
+
+    public function updatefoodview($id){
+        $fooditem = Food::find($id);
+        return view('admin/updatefood', compact('fooditem'));
+    }
+
+    public function updatefooditem(Request $request, $id){
+        $fooditem = Food::find($id);
+        
+        $imagename = '';
+        $image = $request->image;
+        if($image->getClientOriginalName() != ''){
+            $imagename = time().'.'.$image->getClientOriginalExtension();
+            $image->move('foodimages', $imagename);
+
+            //delete old image
+            $imagepath = public_path('foodimages/'.$fooditem->image);
+            if(File::exists($imagepath)) {
+                File::delete($imagepath);
+            }
+        }
+        
+        $fooditem->title = $request->title;
+        $fooditem->price = $request->price;
+        $fooditem->description = $request->description;
+        $fooditem->image = $imagename;
+       
+        $fooditem->save();
+        return redirect()->action('App\Http\Controllers\AdminController@foodmenu')->with('success', 'Food item updated successfully!');
+    }
 }

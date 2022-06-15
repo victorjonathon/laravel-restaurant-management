@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <base href="/public" />
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -62,56 +63,38 @@
             @endif
             
             <div class="row ">
-                <div class="col-12 grid-margin">
+                <div class="col-12 grid-margin stretch-card">
                   <div class="card">
                     <div class="card-body">
                       <h4 class="card-title d-flex justify-content-between">
-                        <span>Food Menu</span>
-                        <a class="btn btn-success" href="{{ url('/addfood') }}">Add New Item</a>
+                        <span>Update Food Item</span>
+                        <a class="btn btn-success" href="{{ url('/foodmenu') }}">Back To Listing</a>
                       </h4>
-                      
-                      <div class="table-responsive">
-                        <table class="table">
-                          <thead>
-                            <tr>
-                              <th>
-                                <div class="form-check form-check-muted m-0">
-                                  <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input">
-                                  </label>
-                                </div>
-                              </th>
-                              <th> Title </th>
-                              <th> price </th>
-                              <th> image </th>
-                              <th> Action </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-
-                              @foreach($fooditems as $item)
-                                <tr>
-                                <td>
-                                    <div class="form-check form-check-muted m-0">
-                                    <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input">
-                                    </label>
-                                    </div>
-                                </td>
-                                <td> {{ $item->title }} </td>
-                                <td> ${{ $item->price }} </td>
-                                <td> <img src="foodimages/{{ $item->image }}" alt=""> </td>
-                                <td>
-                                    <a class="btn btn-outline-warning" href="{{ url('/updatefood', $item->id) }}">Update</a>
-
-                                    <a class="btn btn-outline-danger" href="{{ url('/deletefood', $item->id) }}" onclick="return confirm('Are you sure, you want to delete it?')">Delete</a>
-                                </td>
-                                </tr>
-                            @endforeach
-                            
-                          </tbody>
-                        </table>
-                      </div>
+                      <form class="forms-sample" action="{{ url('/updatefood', $fooditem->id)}}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="form-group">
+                          <label for="exampleInputName1">Title</label>
+                          <input type="text" class="form-control" id="exampleInputName1" placeholder="Name" name="title" value="{{$fooditem->title}}">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputEmail3">Price</label>
+                          <input type="number" step="any" class="form-control" id="exampleInputEmail3" placeholder="Price" name="price" value="{{$fooditem->price}}">
+                        </div>
+                        <div class="form-group">
+                          <label>Current Image</label>
+                          <img src="foodimages/{{ $fooditem->image }}" />
+                        </div>
+                        <div class="form-group">
+                          <label>New Image</label>
+                          <input type="file" name="image" class="">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleTextarea1">Description</label>
+                          <textarea class="form-control" id="exampleTextarea1" rows="5" name="description">{{$fooditem->description}}</textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary me-2">Submit</button>
+                        <button class="btn btn-dark">Cancel</button>
+                      </form>
                     </div>
                   </div>
                 </div>
